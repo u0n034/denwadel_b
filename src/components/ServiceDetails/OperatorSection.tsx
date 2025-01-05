@@ -5,7 +5,7 @@ export const OperatorSection: React.FC = () => {
     <div className="relative max-w-4xl mx-auto">
       <div className="aspect-[16/9] rounded-xl overflow-hidden shadow-lg relative">
         <img
-          src="./images/operator-support.jpg"
+          src="/images/operator-support.jpg"
           alt="プロフェッショナルなオペレーターによる電話対応"
           className="w-full h-full object-cover object-center"
         />
