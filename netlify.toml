@@ -3,16 +3,11 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/"
-  to = "/b"
-  status = 302
-
-[[redirects]]
-  from = "/b/*"
-  to = "/b/index.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 [[redirects]]
-  from = "/a"
-  to = "/a/index.html"
-  status = 404 
+  from = "/"
+  to = "/b/"
+  status = 302 
