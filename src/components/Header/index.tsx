@@ -8,7 +8,7 @@ export const Header = () => {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/call-center-team.jpg"
+          src="./images/call-center-team.jpg"
           alt="コールセンタースタッフ"
           className="w-full h-full object-cover"
         />
