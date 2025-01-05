@@ -10,7 +10,7 @@ export const Header = () => {
         <img
           src="/images/call-center-team.jpg"
           alt="コールセンタースタッフ"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/20" />
       </div>
@@ -28,7 +28,7 @@ export const Header = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20">
+      <div className="relative z-20 h-full">
         <Navbar />
         <Hero />
       </div>
