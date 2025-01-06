@@ -13,7 +13,7 @@ export const Solution: React.FC = () => {
           <div className="aspect-w-16 aspect-h-9">
             <iframe
               className="w-full h-full rounded-lg shadow-lg"
-              src="https://www.youtube.com/embed/tzrL3_LY7pE?rel=0"
+              src="https://www.youtube.com/embed/7vJ4pW2Hmyc?rel=0"
               title="電話代行サービスの紹介"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
