@@ -1,5 +1,6 @@
 import React from 'react';
 import { SocialLinks } from './SocialLinks';
+import { Phone } from 'lucide-react';
 
 export const CompanyInfo = () => {
   return (
@@ -15,7 +16,11 @@ export const CompanyInfo = () => {
           address={[
             '〒926-0046',
             '石川県七尾市神明町1番地',
-            'ミナ・クル1階'
+            'ミナ・クル1階',
+            <div key="phone" className="flex items-center gap-1 justify-center lg:justify-start mt-1">
+              <Phone className="w-4 h-4" />
+              <a href="tel:0767-58-5858" className="hover:text-yellow-500 transition-colors">0767-58-5858</a>
+            </div>
           ]}
         />
         <AddressBlock
@@ -35,7 +40,7 @@ export const CompanyInfo = () => {
 
 interface AddressBlockProps {
   title: string;
-  address: string[];
+  address: (string | React.ReactNode)[];
 }
 
 const AddressBlock: React.FC<AddressBlockProps> = ({ title, address }) => {

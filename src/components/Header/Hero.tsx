@@ -9,6 +9,13 @@ export const Hero: React.FC = () => {
       <div className="container mx-auto px-4 h-full">
         <div className="flex items-center h-full">
           <div className="w-full lg:w-1/2 text-white">
+            <div className="hidden lg:block mb-4">
+              <img 
+                src="/images/noto-support-logo.png" 
+                alt="能登半島地震復興支援" 
+                className="w-48 h-48 object-contain"
+              />
+            </div>
             <h1 className="text-5xl lg:text-7xl font-bold mb-6">
               <span className="font-inter">電話代行</span>
               <br />
