@@ -3,7 +3,7 @@ import { useEmailJS } from './useEmailJS';
 import { useNavigate } from 'react-router-dom';
 
 interface FormData {
-  company?: string;
+  company: string;
   nameSei: string;
   nameMei: string;
   phone: string;
@@ -12,6 +12,7 @@ interface FormData {
 }
 
 interface FormErrors {
+  company?: string;
   nameSei?: string;
   nameMei?: string;
   phone?: string;
@@ -25,8 +26,8 @@ declare global {
 }
 
 export const useContactForm = (type: 'document' | 'inquiry' | 'application') => {
-  const navigate = useNavigate();
   const { sendEmail, isSending } = useEmailJS();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     company: '',
     nameSei: '',
@@ -41,6 +42,7 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+    if (!formData.company) newErrors.company = '会社名を入力してください';
     if (!formData.nameSei) newErrors.nameSei = '姓を入力してください';
     if (!formData.nameMei) newErrors.nameMei = '名を入力してください';
     if (!formData.phone) {
@@ -78,9 +80,6 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
         message: formData.message
       });
       
-      // Redirect to thanks page
-      navigate(`/thanks?type=${type}`);
-      
       setFormData({
         company: '',
         nameSei: '',
@@ -90,6 +89,8 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
         message: ''
       });
       setIsPrivacyAccepted(false);
+
+      navigate(`/thanks?type=${type}`);
     } catch (error) {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
     }

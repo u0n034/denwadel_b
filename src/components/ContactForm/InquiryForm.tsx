@@ -35,6 +35,8 @@ export const InquiryForm = () => {
         value={formData.company}
         onChange={handleChange}
         disabled={isSubmitting}
+        required
+        error={errors.company}
       />
 
       <FormField
@@ -44,6 +46,9 @@ export const InquiryForm = () => {
         required
         error={errors.nameSei || errors.nameMei}
         disabled={isSubmitting}
+        nameSei={formData.nameSei}
+        nameMei={formData.nameMei}
+        onChange={handleChange}
       />
 
       <FormField

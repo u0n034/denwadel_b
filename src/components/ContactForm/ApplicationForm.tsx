@@ -47,6 +47,9 @@ export const ApplicationForm = () => {
         required
         error={errors.nameSei || errors.nameMei}
         disabled={isSubmitting}
+        nameSei={formData.nameSei}
+        nameMei={formData.nameMei}
+        onChange={handleChange}
       />
 
       <FormField
