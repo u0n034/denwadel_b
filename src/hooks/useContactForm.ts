@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useEmailJS } from './useEmailJS';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
   company?: string;
@@ -17,7 +18,14 @@ interface FormErrors {
   email?: string;
 }
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
+
 export const useContactForm = (type: 'document' | 'inquiry' | 'application') => {
+  const navigate = useNavigate();
   const { sendEmail, isSending } = useEmailJS();
   const [formData, setFormData] = useState<FormData>({
     company: '',
@@ -70,7 +78,9 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
         message: formData.message
       });
       
-      alert('送信が完了しました');
+      // Redirect to thanks page
+      navigate(`/thanks?type=${type}`);
+      
       setFormData({
         company: '',
         nameSei: '',

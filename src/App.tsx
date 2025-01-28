@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { PainPoints } from './components/PainPoints';
 import { Solution } from './components/Solution';
@@ -13,10 +14,11 @@ import { FAQ } from './components/FAQ';
 import { ContactForm } from './components/ContactForm';
 import { CompanyInfo } from './components/CompanyInfo';
 import { Footer } from './components/Footer';
+import { Thanks } from './components/Thanks';
 
-function App() {
+const HomePage = () => {
   return (
-    <div className="min-h-screen">
+    <>
       <Header />
       <PainPoints />
       <Solution />
@@ -31,7 +33,20 @@ function App() {
       <ContactForm />
       <CompanyInfo />
       <Footer />
-    </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/thanks" element={<Thanks />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
