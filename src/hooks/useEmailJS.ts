@@ -11,16 +11,33 @@ interface EmailJSParams {
   message?: string;
 }
 
+const getTypeInJapanese = (type: string): string => {
+  switch (type) {
+    case 'document':
+      return '資料請求';
+    case 'inquiry':
+      return 'お問い合わせ';
+    case 'application':
+      return 'お申し込み';
+    default:
+      return type;
+  }
+};
+
 export const useEmailJS = () => {
   const [isSending, setIsSending] = useState(false);
 
   const sendEmail = async (params: EmailJSParams) => {
     setIsSending(true);
     try {
+      const { type, ...restParams } = params;
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
-        params,
+        {
+          ...restParams,
+          type: getTypeInJapanese(type)
+        },
         EMAILJS_CONFIG.PUBLIC_KEY
       );
       return result;
