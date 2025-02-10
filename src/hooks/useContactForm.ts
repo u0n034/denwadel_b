@@ -90,7 +90,7 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
       });
       setIsPrivacyAccepted(false);
 
-      navigate(`/thanks-b?type=${type}`);
+      navigate(`/thanks?type=${type}`);
     } catch (error) {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
     }

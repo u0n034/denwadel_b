@@ -51,7 +51,7 @@ function App() {
     <div className="min-h-screen">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/thanks-b" element={<Thanks />} />
+        <Route path="/thanks" element={<Thanks />} />
         <Route path="/admin/login" element={<Login />} />
         <Route
           path="/admin/chat"
