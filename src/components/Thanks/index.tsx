@@ -14,19 +14,19 @@ interface MessageConfig {
 const messageConfigs: Record<FormType, MessageConfig> = {
   document: {
     title: '資料請求ありがとうございます',
-    description: '担当者より資料をお送りさせていただきます。\n通常3営業日以内にご登録いただいたメールアドレスへ資料をお送りいたします。',
+    description: '担当者より資料をお送りさせていただきます。\n通常3営業日以内にご登録いただいたメールアドレスへ資料をお送りいたします。\n\n貴社の課題解決に向けた具体的なご提案をさせていただきたく、ぜひ一度お打ち合わせのお時間を頂戴できればと存じます。',
     icon: <FileText className="w-12 h-12 text-yellow-500" />,
     eventName: 'DocumentRequest'
   },
   inquiry: {
     title: 'お問い合わせありがとうございます',
-    description: '担当者より順次ご連絡させていただきます。\n通常3営業日以内にご登録いただいた連絡先へご連絡いたします。',
+    description: '担当者より順次ご連絡させていただきます。\n通常3営業日以内にご登録いただいた連絡先へご連絡いたします。\n\n貴社のお困りごとに対する最適なソリューションをご提案させていただきたく、ぜひ一度お打ち合わせのお時間を頂戴できればと存じます。',
     icon: <MessageSquare className="w-12 h-12 text-yellow-500" />,
     eventName: 'Contact'
   },
   application: {
     title: 'お申し込みありがとうございます',
-    description: '担当者よりサービスの詳細についてご連絡させていただきます。\n通常3営業日以内にご登録いただいた連絡先へご連絡いたします。',
+    description: '担当者よりサービスの詳細についてご連絡させていただきます。\n通常3営業日以内にご登録いただいた連絡先へご連絡いたします。\n\n貴社により良いサービスをご提供させていただくため、ぜひ一度お打ち合わせのお時間を頂戴できればと存じます。',
     icon: <UserPlus className="w-12 h-12 text-yellow-500" />,
     eventName: 'Subscribe'
   }
@@ -68,7 +68,16 @@ export const Thanks = () => {
             {config.description}
           </p>
 
-          <div className="space-y-4">
+          <div className="flex flex-col items-center space-y-6">
+            <a
+              href="https://meeting.eeasy.jp/segucci7/online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-yellow-500 text-white px-6 py-3 rounded-md hover:bg-yellow-600 transition-colors"
+            >
+              打ち合わせの日程を調整する
+            </a>
+
             <Link
               to="/"
               className="inline-flex items-center justify-center gap-2 text-yellow-500 hover:text-yellow-600 transition-colors"
