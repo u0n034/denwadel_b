@@ -14,6 +14,12 @@ import { ContactForm } from './components/ContactForm';
 import { CompanyInfo } from './components/CompanyInfo';
 import { Footer } from './components/Footer';
 import { Thanks } from './components/Thanks';
+import { FloatingContactButton } from './components/ContactForm/FloatingContactButton';
+import { ChatBot } from './components/ChatBot/ChatBot';
+import { AdminChat } from './components/AdminChat';
+import { Login } from './components/AdminAuth/Login';
+import { PrivateRoute } from './components/AdminAuth/PrivateRoute';
+import { AuthProvider } from './contexts/AuthContext';
 
 const HomePage = () => {
   return (
@@ -37,12 +43,30 @@ const HomePage = () => {
 };
 
 function App() {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin');
+
   return (
     <div className="min-h-screen">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/thanks-b" element={<Thanks />} />
+        <Route path="/thanks" element={<Thanks />} />
+        <Route path="/admin/login" element={<Login />} />
+        <Route
+          path="/admin/chat"
+          element={
+            <PrivateRoute>
+              <AdminChat />
+            </PrivateRoute>
+          }
+        />
       </Routes>
+      {!isAdminPage && (
+        <>
+          <FloatingContactButton />
+          <ChatBot />
+        </>
+      )}
     </div>
   );
 }
@@ -50,7 +74,9 @@ function App() {
 const AppWrapper = () => {
   return (
     <Router>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </Router>
   );
 };
