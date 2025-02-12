@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { PainPoints } from './components/PainPoints';
+import { FreeDiagnosis } from './components/FreeDiagnosis';
 import { Solution } from './components/Solution';
 import { Features } from './components/Features';
 import { Partner } from './components/Partner';
@@ -27,6 +28,7 @@ const HomePage = () => {
       <Header />
       <PainPoints />
       <Solution />
+      <FreeDiagnosis />
       <Features />
       <Partner />
       <Testimonials />

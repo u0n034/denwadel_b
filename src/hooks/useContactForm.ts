@@ -2,6 +2,8 @@ import { useState, FormEvent } from 'react';
 import { useEmailJS } from './useEmailJS';
 import { useNavigate } from 'react-router-dom';
 
+type FormType = 'document' | 'inquiry' | 'application';
+
 interface FormData {
   company: string;
   nameSei: string;
@@ -17,6 +19,7 @@ interface FormErrors {
   nameMei?: string;
   phone?: string;
   email?: string;
+  message?: string;
 }
 
 declare global {
@@ -25,7 +28,7 @@ declare global {
   }
 }
 
-export const useContactForm = (type: 'document' | 'inquiry' | 'application') => {
+export const useContactForm = (type: FormType) => {
   const { sendEmail, isSending } = useEmailJS();
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
@@ -60,7 +63,15 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!isPrivacyAccepted) {
@@ -103,6 +114,7 @@ export const useContactForm = (type: 'document' | 'inquiry' | 'application') => 
     isSubmitting: isSending,
     isPrivacyAccepted,
     setIsPrivacyAccepted,
+    handleChange,
     handleSubmit
   };
 };
