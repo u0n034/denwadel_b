@@ -43,18 +43,18 @@ export const FloatingContactButton = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="max-w-[800px] mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="flex items-center justify-between gap-8">
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
                     お気軽にお問い合わせください
                   </h3>
-                  <p className="text-gray-600 text-lg">
+                  <p className="text-gray-600 text-base md:text-lg">
                     資料請求・お見積り・ご相談など、お待ちしております
                   </p>
                 </div>
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="bg-yellow-500 text-white px-8 py-4 rounded-lg shadow-md
+                  className="w-full md:w-auto bg-yellow-500 text-white px-8 py-4 rounded-lg shadow-md
                     flex items-center gap-3 justify-center text-lg
                     animate-pulse-slow whitespace-nowrap"
                 >
